@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Dungeon
 {
-    class Character
+    public class Character
     {
         public int _health;
         public string Name { get; set; }
@@ -24,7 +24,7 @@ namespace Dungeon
                 }
                 else
                 {
-                    _health = 1;
+                    _health = MaxLife;
                 }
             }
 
@@ -45,12 +45,18 @@ namespace Dungeon
         {
             Random rand = new Random();
             return rand.Next(EquippedWeapon.MinDamage, EquippedWeapon.MaxDamage + 1);
-
         }
 
         public virtual int CalcuateHitChance()
         {
             return EquippedWeapon.BonusHitChance + HitChance;
+        }
+
+        public override string ToString()
+        {
+            string returnString = String.Format("Name: {0}\nCurrent Health: {1}\nMax Health: {2}\nBlock Value: {3}\nCurrent Weapon: {4}",
+                this.Name, this.Health, this.MaxLife, this.Block, this.EquippedWeapon);
+            return returnString;
         }
     }
 }

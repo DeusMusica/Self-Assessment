@@ -38,8 +38,13 @@ namespace Dungeon
             IsTwoHanded = isTwoHanded;
             BonusHitChance = bonusHitChance;
         }
+        public override string ToString()
+        {
+            string returnString = String.Format("{0} - ({1} - {2}) + {3}", this.Name, this.MinDamage, this.MaxDamage, this.BonusHitChance);
+            return returnString;
+        }
 
-        
+
 
     }
 }
